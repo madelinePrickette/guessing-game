@@ -29,6 +29,7 @@ function submitGuess() {
   $('#kelseyIn').val('')
   $('#andrewIn').val('')
   $('#madelineIn').val('')
+  
 }
 
 function retrieveGuesses() {
@@ -40,6 +41,25 @@ function retrieveGuesses() {
     console.log(response); // should be the array of guess objects
     displayGuesses(response);
   })
+  retrieveHighLow();
+}
+
+function retrieveHighLow() {
+  $.ajax({
+    method: 'GET',
+    url: '/answer'
+  }).then(function(response) {
+    displayHighLow(response);
+  })
+}
+
+function displayHighLow(answerArray) {
+  $('#lastGuess').empty();
+  for(let highLow of answerArray) {
+    $('#lastGuess').append(`
+        <td>${highLow}</td>
+    `)
+  }
 }
 
 function displayGuesses(guesses) {
