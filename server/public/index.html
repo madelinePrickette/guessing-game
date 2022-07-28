@@ -11,6 +11,61 @@
   <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
 </head>
 <body>
-    <h1>YOUR GAME HERE!</h1>
+  <h1>Random Number Guessing Game Y'all</h1>
+
+  <div id="detailArea">       <!-- Box to show if previous guesses were high or low -->
+    <h4>Last guess:</h4>
+    <table id="lastGuess">
+      <tr>
+        <td>Justin</td>
+        <td id="jLastGuess"></td>
+      </tr>
+      <tr>
+        <td>Kelsey</td>
+        <td id="kLastGuess"></td>
+      </tr>
+      <tr>
+        <td>Andrew</td>
+        <td id="aLastGuess"></td>
+      </tr>
+      <tr>
+        <td>Madeline</td>
+        <td id="mLastGuess"></td>
+      </tr>
+    </table>
+  </div>
+
+  <h2>Contestants</h2>
+  <h3>Justin </h3><input id="justinIn" placeholder="Guess" type="number"><br>
+  <h3>Kelsey </h3><input id="kelseyIn" placeholder="Guess" type="number"><br>
+  <h3>Andrew </h3><input id="andrewIn" placeholder="Guess" type="number"><br>
+  <h3>Madeline </h3><input id="madelineIn" placeholder="Guess" type="number">
+  <button id="submit">Submit</button><br>
+
+  <table>
+    <thead>
+      <th>Round</th>
+      <th>Justin</th>
+      <th>Kelsey</th>
+      <th>Andrew</th>
+      <th>Madeline</th>
+    </thead>
+    <tbody id="guessTable">
+      <!-- <tr>
+        <td>1</td>
+        <td>5</td>
+        <td>10</td>
+        <td>15</td>
+        <td>20</td>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>5</td>
+        <td>10</td>
+        <td>15</td>
+        <td>20</td>
+      </tr> -->
+    </tbody>
+  </table>
 </body>
 </html>
