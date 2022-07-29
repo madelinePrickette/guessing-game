@@ -44,3 +44,13 @@ tr {
     /* width: 100%;
     table-layout: auto; */
 }
+
+.winScreen {
+    background-color: crimson;
+    font-weight: 900;
+    font-size: xx-large;
+    color: black;
+    height: 700px;
+    width: 100%;
+    text-align: center;
+}

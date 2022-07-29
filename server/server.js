@@ -10,13 +10,12 @@ app.use(bodyParser.urlencoded({extended:true}))
 app.use(express.static('server/public'));
 
 let RNG = 0;
-RNG = Math.floor(Math.random() * 25 ) + 1;
 
-// function generateRN() {  // Random Number Generator
+function generateRN() {
+  return  Math.floor(Math.random() * 4 ) + 1;
+}
 
-//   return RNG;
-// }
-
+RNG = generateRN();
 let tempArray = [];
 let answerArray = [];
 
@@ -38,11 +37,11 @@ function highLow() {
       answerArray.push('winner!')
     }
   }
-  
   tempArray = [];
 }
 
-let guessArray = [{Justin: 4, Kelsey: 2, Andrew: 12, Madeline: 1}]; // dummy data
+let guessArray = [];
+// let guessArray = [{Justin: 4, Kelsey: 2, Andrew: 12, Madeline: 1}]; // dummy data
 
 // GET & POST Routes go here
 app.get('/guesses', (req, res) => {
@@ -63,4 +62,12 @@ app.post('/guesses', (req, res) => {
 
 app.listen(PORT, () => {
   console.log ('Server is running on port', PORT)
+})
+
+app.post('/restart', (req, res) => {
+  tempArray = [];
+  answerArray = [];
+  guessArray = [];
+  RNG = generateRN();
+  res.sendStatus(200);
 })

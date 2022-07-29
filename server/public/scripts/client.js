@@ -4,6 +4,7 @@ function handleReady() {
   retrieveGuesses();
   console.log("jquery is loaded!")
   $('#submit').on('click', submitGuess);
+  $(document).on('click', '.restartButton', restartButtonTasks)
 }
 
 let round = 0;
@@ -52,15 +53,26 @@ function retrieveHighLow() {
     displayHighLow(response);
   })
 }
+let nameArray = ['Justin', 'Kelsey', 'Andrew', 'Madeline'];
 
 function displayHighLow(answerArray) {
   $('#lastGuess').empty();
-  for(let highLow of answerArray) {
+  for(let i=0; i<answerArray.length; i++) {
+    if (answerArray[i] === 'winner!') {
+      let winnerName = nameArray[i]
+      $('#winContainer').append(`
+        <div class="winScreen">
+          <h1>${winnerName} is the WINNER!</h1>
+          <button class="restartButton">Restart</button>
+        </div>`)
+    }
     $('#lastGuess').append(`
-        <td>${highLow}</td>
+        <td>${answerArray[i]}</td>
     `)
   }
+
 }
+
 
 function displayGuesses(guesses) {
   console.log(guesses);
@@ -77,4 +89,16 @@ function displayGuesses(guesses) {
     <td>${guess.Madeline}</td>
   </tr>
   `)}
+}
+
+function restartButtonTasks() {
+  console.log('restart pushed');
+  $.ajax({
+    method: 'POST',
+    url: '/restart'
+  }).then(function(response){
+    console.log(response);
+    retrieveGuesses();
+  })
+  $('#winContainer').empty();
 }
