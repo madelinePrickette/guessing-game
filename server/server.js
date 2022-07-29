@@ -12,7 +12,7 @@ app.use(express.static('server/public'));
 let RNG = 0;
 
 function generateRN() {
-  return  Math.floor(Math.random() * 4 ) + 1;
+  return  Math.floor(Math.random() * 25 ) + 1;
 }
 
 RNG = generateRN();
